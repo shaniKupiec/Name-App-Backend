@@ -1,5 +1,5 @@
 
-# Name App Frontend
+# Name App Backend
 
 Name App Backend
 Frontend code: https://github.com/shaniKupiec/Name-App-Frontend
@@ -8,9 +8,12 @@ Frontend code: https://github.com/shaniKupiec/Name-App-Frontend
 - Node.js
 - Express
 - REST API
+- Axios
 
 ## Features
-- Allows getting data(probability, count and gender) about name
+- Make API request to an external API
+- Stores history of names written by the user
+
 
 
 ## Installation
