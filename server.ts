@@ -31,7 +31,7 @@ app.delete("/historyList", (req, res) => {
 app.get("/nameInfo/:name", async (req, res) => {
   const name = req.params.name;
   const data = await axios.get(`https://api.genderize.io/?name=${name}`).then((res) => res.data);
-  const countries: HistoryList = await axios.get(`https://api.nationalize.io/?name=${name}`).then((res) => res.data.country);
+  const countries: Country = await axios.get(`https://api.nationalize.io/?name=${name}`).then((res) => res.data.country);
   data.countries = countries;
   data.id = _makeId();
   historyList.unshift(data);
