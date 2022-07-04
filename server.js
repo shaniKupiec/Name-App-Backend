@@ -3,21 +3,7 @@ const express = require("express");
 const app = express();
 const port = 3001;
 
-interface HistoryList {
-  id: string;
-  name: string;
-  gender: string;
-  probability: number;
-  count: number;
-  countries: Country[];
-}
-
-interface Country {
-  country_id: string;
-  probability: number;
-}
-
-let historyList: HistoryList[] = [];
+let historyList = [];
 
 app.get("/historyList", (req, res) => {
   res.json(historyList);
@@ -31,7 +17,7 @@ app.delete("/historyList", (req, res) => {
 app.get("/nameInfo/:name", async (req, res) => {
   const name = req.params.name;
   const data = await axios.get(`https://api.genderize.io/?name=${name}`).then((res) => res.data);
-  const countries: Country = await axios.get(`https://api.nationalize.io/?name=${name}`).then((res) => res.data.country);
+  const countries = await axios.get(`https://api.nationalize.io/?name=${name}`).then((res) => res.data.country);
   data.countries = countries;
   data.id = _makeId();
   historyList.unshift(data);
